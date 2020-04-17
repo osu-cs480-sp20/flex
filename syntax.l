@@ -92,7 +92,16 @@ cat$  {
 
 .     {
         std::cerr << "Invalid chatacter: " << yytext << std::endl;
+        std::cerr << "  occurred on line #: " << yylineno << std::endl;
         return 1;
       }
 
+[ \t\n] { /*ignore */ }
+
+lol+|(ha)+ { num_laughs++; }
+
 %%
+
+int main() {
+  return yylex();
+}
